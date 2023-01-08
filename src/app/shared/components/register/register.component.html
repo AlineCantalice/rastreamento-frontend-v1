@@ -1,0 +1,115 @@
+<p-card class="app-card">
+    <p-toast position="top-right"></p-toast>
+    <div class="text-center mb-4">
+        <h1>Cadastro</h1>
+    </div>
+    <div class="tab-content">
+        <div class="col-md-12 d-flex justify-content-center">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col">
+                        <!-- Name input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="name">
+                            <label for="float-input">Nome Completo</label>
+                        </span>
+                        <!-- Username input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="username">
+                            <label for="float-input">Nome de usuário</label>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <!-- Phone input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <p-inputMask id="float-input" type="text" mask="(99) 99999-9999" formControlName="phone">
+                            </p-inputMask>
+                            <label for="float-input">(DDD) e Telefone</label>
+                        </span>
+                        <!-- Password input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="password" pPassword [feedback]="false"
+                                formControlName="password" />
+                            <label for="float-input">Senha</label>
+                        </span>
+                    </div>
+                </div>
+
+                <hr class="mb-4" />
+
+                <div class="row">
+                    <div class="col">
+                        <div *ngFor="let type of types" class="field-checkbox mb-4 app-card__form__input">
+                            <p-radioButton [inputId]="type.key" name="type" [value]="type.name"
+                                [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}"></p-radioButton>
+                            <label [for]="type.key">{{type.name}}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <app-person-type-input [form]="form" [type]="selectedType"></app-person-type-input>
+                    </div>
+                </div>
+
+                <hr class="mb-4" />
+
+                <div class="row">
+                    <div class="col">
+                        <!-- Name input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="zipCode">
+                            <label for="float-input">CEP</label>
+                        </span>
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="street">
+                            <label for="float-input">Rua</label>
+                        </span>
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="complement">
+                            <label for="float-input">Complemento</label>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <!-- Name input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="number">
+                            <label for="float-input">Número</label>
+                        </span>
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <input id="float-input" type="text" pInputText formControlName="neighborhood">
+                            <label for="float-input">Bairro</label>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <!-- Email input -->
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <p-dropdown [options]="states" [(ngModel)]="selectedState"
+                                (ngModelChange)="getCitiesByStatesId()" [filter]="true" filterBy="nome"
+                                formControlName="state" optionLabel="nome" placeholder="Selecione" [showClear]="true">
+                            </p-dropdown>
+                            <label for="float-input">Estado</label>
+                        </span>
+
+                        <span class="p-float-label mb-4 app-card__form__input">
+                            <p-dropdown [options]="cities" formControlName="city" [filter]="true" filterBy="nome"
+                                optionLabel="nome" placeholder="Selecione" [showClear]="true">
+                            </p-dropdown>
+                            <label for="float-input">Cidade</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!-- Submit button -->
+                        <button class="mb-4" pButton type="button" label="Cadastrar" (click)="onSubmit()"></button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Já tem conta? Faça o <a href="/">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</p-card>

@@ -11,6 +11,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        RouterTestingModule
+      ]
     }).compileComponents();
   });
 

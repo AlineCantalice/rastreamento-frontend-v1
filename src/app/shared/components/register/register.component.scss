@@ -1,0 +1,21 @@
+.app-card {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+
+    &__form {
+        width: 50vw;
+
+        &__input {
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+
+}

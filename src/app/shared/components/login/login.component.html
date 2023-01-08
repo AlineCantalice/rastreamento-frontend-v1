@@ -1,0 +1,26 @@
+<p-card class="app-card">
+    <div class="text-center mb-4">
+        <h1>Login</h1>
+    </div>
+    <div class="tab-content">
+        <div class="col-md-12 d-flex justify-content-center">
+            <form class="app-card__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <span class="p-float-label mb-4 app-card__form__input">
+                    <input id="float-input" formControlName="username" type="text" pInputText>
+                    <label for="float-input">Nome de usuário</label>
+                </span>
+                <span class="p-float-label mb-4 app-card__form__input">
+                    <input id="float-input" formControlName="password" type="password" pPassword [feedback]="false" />
+                    <label for="float-input">Senha</label>
+                </span>
+                <button (click)="onSubmit()" [disabled]="loading" pButton type="button" class="mb-4" label="Entrar">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                <div class="text-center">
+                    <p>Ainda não tem conta? <a href="/register">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</p-card>
