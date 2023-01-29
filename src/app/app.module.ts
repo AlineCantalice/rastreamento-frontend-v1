@@ -37,6 +37,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { PersonTypeInputComponent } from './shared/components/person-type-input/person-type-input.component';
 import { ProductFormComponent } from './shared/components/product-form/product-form.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+import {SidebarModule} from 'primeng/sidebar';
 
 const PRIME_NG = [
   ToastModule,
@@ -62,6 +63,7 @@ const PRIME_NG = [
   InputNumberModule,
   ConfirmDialogModule,
   InputTextareaModule,
+  SidebarModule,
 ];
 
 @NgModule({

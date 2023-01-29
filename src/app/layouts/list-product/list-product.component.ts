@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ErrorMessageComponent } from 'src/app/shared/components/error-message/error-message.component';
 
@@ -29,7 +29,16 @@ export class ListProductComponent implements OnInit {
   }
 
   openNew() {
-    //this.product = {};
+    this.product = {
+      id: 0,
+      name: "",
+      price: null,
+      receiptDate: null,
+      shippingDate: null,
+      variety: "",
+      batch: null,
+      weight: null
+    };
     this.submitted = false;
     this.productDialog = true;
 }
@@ -43,11 +52,11 @@ export class ListProductComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id).subscribe(() => {
+  deleteProduct(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(() => {
       this.getListProducts();
     }, () => {
-      this.errorMessageComponent.setError('Falha ao deletar o produto.');
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to delete product', life: 3000});
     });
   }
 
@@ -70,6 +79,7 @@ export class ListProductComponent implements OnInit {
 
     editProduct(product: Product) {
       this.product = {...product};
+      this.productService.updateProduct({...product});
       this.productDialog = true;
   }
 
@@ -83,18 +93,35 @@ export class ListProductComponent implements OnInit {
 
       if (this.product.name.trim()) {
           if (this.product.id) {
-              this.products[this.findIndexById(this.product.id)] = this.product;                
+            this.productService.updateProduct(this.product).subscribe(response => {
               this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+            }, error => {
+              this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to update product', life: 3000});
+            });
+              //this.products[this.findIndexById(this.product.id)] = this.product;                
           }
           else {
-              this.product.name = 'product-placeholder.svg';
-              this.products.push(this.product);
+            this.productService.addProduct(this.product).subscribe(reponse => {
               this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
+            }, error => {
+              this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to create product', life: 3000});
+            })
+              //this.product.name = 'product-placeholder.svg';
+              //this.products.push(this.product);
+              //this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
           }
-
-          this.products = [...this.products];
+          this.getListProducts();        
           this.productDialog = false;
-          //this.product = {};
+          this.product = {
+            id: 0,
+            name: "",
+            price: null,
+            receiptDate: null,
+            shippingDate: null,
+            variety: "",
+            batch: null,
+            weight: null
+          };
       }
   }
 

@@ -6,4 +6,5 @@ export interface Product {
     receiptDate: Date;
     shippingDate: Date;
     batch: number;
+    weight: number;
 }
