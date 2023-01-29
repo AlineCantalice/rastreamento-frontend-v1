@@ -30,7 +30,6 @@ export class ListProductComponent implements OnInit {
 
   openNew() {
     this.product = {
-      id: 0,
       name: "",
       price: null,
       receiptDate: null,
@@ -41,14 +40,13 @@ export class ListProductComponent implements OnInit {
     };
     this.submitted = false;
     this.productDialog = true;
-}
+  }
 
   getListProducts() {
     this.productService.getListProducts().subscribe((products: Product[]) => {
       this.products = products;
-      console.log(products)
     }, () => {
-      this.errorMessageComponent.setError('Falha ao buscar produtos.');
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro to find products', life: 3000 });
     });
   }
 
@@ -64,77 +62,46 @@ export class ListProductComponent implements OnInit {
     return this.products && this.products.length > 0;
   }
 
-  deleteSelectedProducts() {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete the selected products?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-                this.selectedProducts = null;
-                this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
-            }
-        });
-    }
-
-    editProduct(product: Product) {
-      this.product = {...product};
-      this.productService.updateProduct({...product});
-      this.productDialog = true;
+  editProduct(product: Product) {
+    this.product = { ...product };
+    this.productDialog = true;
   }
 
   hideDialog() {
-      this.productDialog = false;
-      this.submitted = false;
+    this.productDialog = false;
+    this.submitted = false;
   }
-  
+
   saveProduct() {
-      this.submitted = true;
+    this.submitted = true;
 
-      if (this.product.name.trim()) {
-          if (this.product.id) {
-            this.productService.updateProduct(this.product).subscribe(response => {
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
-            }, error => {
-              this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to update product', life: 3000});
-            });
-              //this.products[this.findIndexById(this.product.id)] = this.product;                
-          }
-          else {
-            this.productService.addProduct(this.product).subscribe(reponse => {
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
-            }, error => {
-              this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to create product', life: 3000});
-            })
-              //this.product.name = 'product-placeholder.svg';
-              //this.products.push(this.product);
-              //this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
-          }
-          this.getListProducts();        
-          this.productDialog = false;
-          this.product = {
-            id: 0,
-            name: "",
-            price: null,
-            receiptDate: null,
-            shippingDate: null,
-            variety: "",
-            batch: null,
-            weight: null
-          };
+    if (this.product.name.trim()) {
+      if (this.product.id) {
+        this.productService.updateProduct(this.product).subscribe(response => {
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+        }, error => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro to update product', life: 3000 });
+        });
       }
-  }
-
-  findIndexById(id: number): number {
-      let index = -1;
-      for (let i = 0; i < this.products.length; i++) {
-          if (this.products[i].id === id) {
-              index = i;
-              break;
-          }
-      }
-
-      return index;
+      else {
+        this.productService.addProduct(this.product).subscribe(reponse => {
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+        }, error => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro to create product', life: 3000 });
+        })
+      }      
+      this.getListProducts();
+      this.productDialog = false;
+      this.product = {
+        name: "",
+        price: null,
+        receiptDate: null,
+        shippingDate: null,
+        variety: "",
+        batch: null,
+        weight: null
+      };
+    }
   }
 
 }
