@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { catchError, throwError } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ErrorMessageComponent } from 'src/app/shared/components/error-message/error-message.component';
@@ -51,11 +52,13 @@ export class ListProductComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    this.productService.deleteProduct(product.id).subscribe(() => {
+    this.productService.deleteProduct(product.id).subscribe({
+      next: value => {
       this.getListProducts();
-    }, () => {
+    }, error: error => {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'Erro to delete product', life: 3000});
-    });
+    }});
+    this.getListProducts();
   }
 
   hasProduct(): boolean {
@@ -77,18 +80,20 @@ export class ListProductComponent implements OnInit {
 
     if (this.product.name.trim()) {
       if (this.product.id) {
-        this.productService.updateProduct(this.product).subscribe(response => {
+        this.productService.updateProduct(this.product).subscribe({
+          next: response => {
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-        }, error => {
+        }, error: error => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro to update product', life: 3000 });
-        });
+        }});
       }
       else {
-        this.productService.addProduct(this.product).subscribe(reponse => {
+        this.productService.addProduct(this.product).subscribe({
+          next: reponse => {
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-        }, error => {
+        }, error: error => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erro to create product', life: 3000 });
-        })
+        }})
       }      
       this.getListProducts();
       this.productDialog = false;

@@ -38,6 +38,10 @@ import { PersonTypeInputComponent } from './shared/components/person-type-input/
 import { ProductFormComponent } from './shared/components/product-form/product-form.component';
 import { RegisterComponent } from './shared/components/register/register.component';
 import {SidebarModule} from 'primeng/sidebar';
+import {MenuModule} from 'primeng/menu';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import {StyleClassModule} from 'primeng/styleclass';
 
 const PRIME_NG = [
   ToastModule,
@@ -64,6 +68,9 @@ const PRIME_NG = [
   ConfirmDialogModule,
   InputTextareaModule,
   SidebarModule,
+  MenuModule,
+  CheckboxModule,
+  StyleClassModule,
 ];
 
 @NgModule({
@@ -75,6 +82,7 @@ const PRIME_NG = [
     RegisterComponent,
     ListProductComponent,
     ProductFormComponent,
+    MenuComponent,
   ],
   imports: [
     ...PRIME_NG,
