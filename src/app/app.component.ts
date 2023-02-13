@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'rastreamento-frontend';
 
+  userLoged: boolean = false;
+
   /* FORMA DE USAR O COMPONENTE DE ERRO 
   @ViewChild('errorMessage', { static: true}) errorMessageComponent: ErrorMessageComponent;
   errorMessage: ElementRef;
