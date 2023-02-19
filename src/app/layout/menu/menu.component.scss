@@ -1,0 +1,222 @@
+.sidebar {
+    $p: '.sidebar';
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 72px;
+    height: calc(100vh - 56px);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 0 0;
+    background-color: #FEFEFE;
+    transition: width 0.2s ease;
+
+    &--opened {
+        width: 310px;
+        position: fixed;
+        z-index: 10;
+
+        #{$p}__button--menu {
+            display: none !important;
+        }
+
+        #{$p}__button--close,
+        #{$p}__heading,
+        #{$p}__footer-content {
+            display: block !important;
+        }
+
+        #{$p}__label {
+            display: flex !important;
+        }
+
+        #{$p}__header,
+        #{$p}__footer {
+            width: 310px;
+            justify-content: space-between;
+        }
+
+        #{$p}__link {
+            grid-template-columns: 62px calc(100% - 62px);
+        }
+
+        &+div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.3);
+            z-index: 5;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        flex-basis: 56px;
+        padding: 16px;
+        border-bottom: 1px solid #F2F3F6;
+    }
+
+    &__heading {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21.6px;
+        display: none;
+    }
+
+    &__button {
+        &--menu {
+            //color: #313338;
+            display: block !important;
+        }
+
+        &--close {
+            //color: #888D95;
+            display: none !important;
+        }
+
+        &--footer {
+            //color: #888D95;
+        }
+    }
+
+    &__content {
+        flex-grow: 1;
+        overflow-x: hidden;
+    }
+
+    &__items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    &__item {
+        display: flex;
+        height: 72px;
+        border-bottom: 1px solid #F2F3F6;
+    }
+
+    &__link {
+        display: grid;
+        grid-template-columns: 72px;
+        align-items: center;
+        width: 100%;
+        height: 72px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #F4F5F7;
+
+            #{$p}__icon {
+                background-color: #F4F5F7;
+            }
+        }
+
+        &:active {
+            background-color: #D4D8DD;
+
+            #{$p}__icon {
+                background-color: #D4D8DD;
+            }
+        }
+    }
+
+    &__link--active {
+
+        #{$p}__title {
+            color: #3354FD;
+        }
+
+        #{$p}__icon {
+            //color: #fff;
+            background-color: #3354FD;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+        }
+
+        &:hover {
+            #{$p}__icon {
+                background-color: #3354FD;
+            }
+        }
+    }
+
+    &__icon-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        //color: #3354FD;
+    }
+
+    &__label {
+        display: none;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 72px;
+        position: relative;
+        left: -5px;
+    }
+
+    &__title {
+        //color: #111214;
+        font-size: 16px;
+        font-style: normal;
+    }
+
+    &__description {
+        //color: #111214;
+        font-size: 12px;
+        line-height: 13.5px;
+        font-style: normal;
+        margin-top: 4px;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 48px;
+        max-height: 48px;
+
+        padding: 8px 16px;
+        background-color: #F4F5F7;
+
+        &__heading {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 15.75px;
+            letter-spacing: 0.5%;
+            //color: #111214;
+        }
+
+        &__description {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 13.5px;
+            letter-spacing: 1.4%;
+            //color: #888D95;
+        }
+    }
+
+    &__footer-content {
+        display: none;
+    }
+
+
+}

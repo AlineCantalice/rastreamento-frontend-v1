@@ -1,0 +1,9 @@
+<div class="w-full header">
+    <div>
+        <h1 class="title">Olá, {{ user.username }}</h1>
+    </div>
+    <div>
+        <button type="button" pButton icon="pi pi-users" label="" (click)="menu.toggle($event)"></button>
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+    </div>
+</div>

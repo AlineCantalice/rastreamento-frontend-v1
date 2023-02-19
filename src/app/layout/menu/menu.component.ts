@@ -1,0 +1,53 @@
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+
+@Component({
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
+})
+export class MenuComponent implements OnInit {
+
+  items: MenuItem[];
+
+  showMenu: boolean = false;
+  menuOpened: boolean = false;
+  innerWidth: number = 0;
+
+  constructor() {
+    this.innerWidth = window.innerWidth;
+  }
+
+  ngOnInit(): void {
+    this.items = [
+      { label: 'New', icon: 'pi pi-fw pi-plus' },
+      { label: 'Open', icon: 'pi pi-fw pi-download' },
+      { label: 'Undo', icon: 'pi pi-fw pi-refresh' }
+    ];
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if(this.breakpoint) {
+      this.showMenu = false;
+      this.menuOpened = false;
+    } else {
+      this.showMenu = true;
+      this.menuOpened = false;
+    }
+  }
+
+  toggle(): void {
+    if(this.breakpoint) {
+      this.menuOpened = !this.menuOpened;
+    } else {
+      this.showMenu = !this.showMenu;
+    }
+  }
+
+  breakpoint(): boolean {
+    return this.innerWidth <= 1024;
+  }
+
+}
