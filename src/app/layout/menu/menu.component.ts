@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      { label: 'New', icon: 'pi pi-fw pi-plus' },
+      { label: 'Meus produtos', icon: 'pi pi-fw pi-box' },
       { label: 'Open', icon: 'pi pi-fw pi-download' },
       { label: 'Undo', icon: 'pi pi-fw pi-refresh' }
     ];
