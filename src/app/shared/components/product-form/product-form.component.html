@@ -1,1 +1,53 @@
-<p>product-form works!</p>
+<p-dialog [(visible)]="productDialog" header="Editar ou adicionar produtos" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="field col">
+            <label for="name">Nome</label>
+            <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus />
+            <small class="p-error" *ngIf="submitted && !product.name">Name is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="variety">Variedade</label>
+            <input type="text" pInputText id="variety" [(ngModel)]="product.variety" required autofocus />
+            <small class="p-error" *ngIf="submitted && !product.variety">Variety is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="price">Preço</label>
+            <p-inputNumber id="price" [(ngModel)]="product.price" mode="currency" currency="BRL"
+                locale="pt-BR"></p-inputNumber>
+                <small class="p-error" *ngIf="submitted && !product.price">Price is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="receiptDate">Data de Recebimento</label>
+            <input type="text" pInputText id="receiptDate" [(ngModel)]="product.receiptDate" required autofocus />
+            <small class="p-error" *ngIf="submitted && !product.receiptDate">Receipt Date is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="shippingDate">Data de Exportação</label>
+            <input type="text" pInputText id="shippingDate" [(ngModel)]="product.shippingDate" required autofocus />
+            <small class="p-error" *ngIf="submitted && !product.shippingDate">Receipt Date is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="batch">Lote</label>
+            <p-inputNumber id="batch" [(ngModel)]="product.batch" locale="pt-BR"></p-inputNumber>
+                <small class="p-error" *ngIf="submitted && !product.batch">Batch is required.</small>
+        </div>
+
+        <div class="field col">
+            <label for="weight">Peso</label>
+            <p-inputNumber id="weight" [(ngModel)]="product.weight" locale="pt-BR"></p-inputNumber>
+                <small class="p-error" *ngIf="submitted && !product.weight">Weight is required.</small>
+        </div>
+        
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>

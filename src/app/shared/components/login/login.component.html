@@ -1,26 +1,34 @@
-<p-card class="app-card">
-    <div class="text-center mb-4">
-        <h1>Login</h1>
-    </div>
-    <div class="tab-content">
-        <div class="col-md-12 d-flex justify-content-center">
-            <form class="app-card__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <span class="p-float-label mb-4 app-card__form__input">
-                    <input id="float-input" formControlName="username" type="text" pInputText>
-                    <label for="float-input">Nome de usuário</label>
-                </span>
-                <span class="p-float-label mb-4 app-card__form__input">
-                    <input id="float-input" formControlName="password" type="password" pPassword [feedback]="false" />
-                    <label for="float-input">Senha</label>
-                </span>
-                <button (click)="onSubmit()" [disabled]="loading" pButton type="button" class="mb-4" label="Entrar">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-                <div class="text-center">
-                    <p>Ainda não tem conta? <a href="/register">Cadastre-se</a></p>
-                </div>
-            </form>
+<form class="app-card" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+        <div class="text-center mb-5">
+            <img src="assets/images/blocks/logos/hyper.svg" alt="Image" height="50" class="mb-3">
+            <div class="text-900 text-3xl font-medium mb-3">Bem vindo(a) de volta!</div>
+            <span class="text-600 font-medium line-height-3">Ainda não tem uma conta?</span>
+            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" href="/register">Cadastre-se!</a>
+        </div>
+
+        <div>
+            <span class="p-float-label app-card__form__input mb-5">
+                <input id="float-label" formControlName="username" type="text" placeholder="Nome de usuário" pInputText
+                    class="w-full" required minlength="3" maxlength="50" aria-describedby="username-help">
+                <label for="float-label" class="block text-900 font-medium mb-2">Nome de usuário</label>
+                <small *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" id="username-help" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
+            </span>
+            <span class="p-float-label app-card__form__input mb-4">
+                <input id="float-label" formControlName="password" type="password" placeholder="Senha" pInputText
+                    class="w-full" required>
+                <label for="float-label" class="block text-900 font-medium mb-2">Senha</label>
+                <small *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" id="username-help" class="p-error">Campo obrigatório com no mínimo 4 caracteres.</small>
+            </span>
+            <div class="flex align-items-center justify-content-between mb-6">
+                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Esqueceu a
+                    senha?</a>
+            </div>
+
+            <button (click)="onSubmit()" pRipple [disabled]="loading" pButton type="button" icon="pi pi-user"
+                class="w-full" label="Entrar">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            </button>
         </div>
     </div>
-</p-card>
+</form>

@@ -15,6 +15,8 @@ import { UserService } from 'src/app/services/user/user.service';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  loading = false;
+  submitted = false;
 
   states: State[] = [];
   cities: City[] = [];
@@ -40,8 +42,8 @@ export class RegisterComponent implements OnInit {
       cnpj: [''],
       tradeName: [''],
       stateRegistration: [''],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       street: ['', Validators.required],
       number: ['', Validators.required],
       complement: [''],

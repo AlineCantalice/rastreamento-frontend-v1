@@ -8,15 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'rastreamento-frontend';
 
-  /* FORMA DE USAR O COMPONENTE DE ERRO 
+  userLoged: boolean = false;
+
+  /*FORMA DE USAR O COMPONENTE DE ERRO 
   @ViewChild('errorMessage', { static: true}) errorMessageComponent: ErrorMessageComponent;
-  errorMessage: ElementRef;
+  errorMessage: ElementRef;*/
   
   ngOnInit(): void {
-    this.errorMessageComponent.setError('Essa é uma mensagem de erro')
+    //this.errorMessageComponent.setError('Essa é uma mensagem de erro')
+    this.userLoged = !!localStorage.getItem('currentUser');
   }
 
-  ngAfterViewInit(): void {
+  /*ngAfterViewInit(): void {
     this.errorMessageComponent.setError('Essa é uma mensagem de erro')
   }*/
 }

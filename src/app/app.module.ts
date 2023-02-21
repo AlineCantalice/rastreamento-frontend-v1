@@ -1,11 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationService, MessageService, SharedModule } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
@@ -31,14 +29,21 @@ import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListProductComponent } from './layouts/list-product/list-product.component';
+import { ListProductComponent } from './shared/components/list-product/list-product.component';
 import { ErrorMessageComponent } from './shared/components/error-message/error-message.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { PersonTypeInputComponent } from './shared/components/person-type-input/person-type-input.component';
 import { ProductFormComponent } from './shared/components/product-form/product-form.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+import {SidebarModule} from 'primeng/sidebar';
+import {MenuModule} from 'primeng/menu';
+import { MenuComponent } from './layout/menu/menu.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import {StyleClassModule} from 'primeng/styleclass';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
 
-const PRIME_NG = [
+/*const PRIME_NG = [
   ToastModule,
   CardModule,
   InputTextModule,
@@ -62,30 +67,38 @@ const PRIME_NG = [
   InputNumberModule,
   ConfirmDialogModule,
   InputTextareaModule,
-];
+  SidebarModule,
+  MenuModule,
+  CheckboxModule,
+  StyleClassModule,
+];*/
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorMessageComponent,
+    /*ErrorMessageComponent,
     LoginComponent,
     PersonTypeInputComponent,
-    RegisterComponent,
-    ListProductComponent,
-    ProductFormComponent,
+    RegisterComponent,*/
+    //ListProductComponent,
+    /*ProductFormComponent,
+    MenuComponent,*/
   ],
   imports: [
-    ...PRIME_NG,
+    //...PRIME_NG,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
+    //SharedModule,
+    //FormsModule,
+    //ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
+    LayoutModule,
+    
   ],
-  providers: [MessageService, ConfirmationService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,14 @@
 <div [formGroup]="form" *ngIf="type === 'Pessoa Jurídica'" class="row">
     <div class="col">
-        <span class="p-float-label mb-4 app-card__form__input">
+        <span class="p-float-label mb-3 app-card__form__input">
             <input id="float-input" type="text" pInputText formControlName="cnpj">
             <label for="float-input">CNPJ</label>
         </span>
-        <span class="p-float-label mb-4 app-card__form__input">
+        <span class="p-float-label mb-3 app-card__form__input">
             <input id="float-input" type="text" pInputText formControlName="tradeName">
             <label for="float-input">Nome Fantasia</label>
         </span>
-        <span class="p-float-label mb-4 app-card__form__input">
+        <span class="p-float-label mb-3 app-card__form__input">
             <input id="float-input" type="text" pInputText formControlName="stateRegistration">
             <label for="float-input">Inscrição Estadual</label>
         </span>
@@ -16,7 +16,7 @@
 </div>
 <div [formGroup]="form" *ngIf="type === 'Pessoa Física'" class="row">
     <div class="col">
-        <span class="p-float-label mb-4 app-card__form__input">
+        <span class="p-float-label mb-3 app-card__form__input">
             <input id="float-input" type="text" pInputText formControlName="cpf">
             <label for="float-input">CPF</label>
         </span>
