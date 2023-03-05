@@ -3,9 +3,15 @@
     flex-direction: row;
     margin: 60px 20px 0 0;
 
+    &__menu {
+        margin-top: 0.5rem;
+        height: 100% !important;
+        border-radius: 0 0.375rem 0.375rem 0 !important;
+    }
+
     &__content {
         flex-grow: 1;
         height: calc(100vh - 56px);
-        overflow-y: scroll;
+        overflow-y: hidden;
     }
 }
