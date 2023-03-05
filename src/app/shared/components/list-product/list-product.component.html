@@ -76,13 +76,13 @@
 
         <div class="field col">
             <label for="receiptDate">Data de Recebimento</label>
-            <input type="text" pInputText id="receiptDate" [(ngModel)]="product.receiptDate" required autofocus />
+            <p-calendar [(ngModel)]="product.receiptDate" dateFormat="dd/mm/yy" inputId="receiptDate"></p-calendar>
             <small class="p-error" *ngIf="submitted && !product.receiptDate">Receipt Date is required.</small>
         </div>
 
         <div class="field col">
             <label for="shippingDate">Data de Exportação</label>
-            <input type="text" pInputText id="shippingDate" [(ngModel)]="product.shippingDate" required autofocus />
+            <p-calendar [(ngModel)]="product.shippingDate" dateFormat="dd/mm/yy" inputId="shippingDate"></p-calendar>
             <small class="p-error" *ngIf="submitted && !product.shippingDate">Receipt Date is required.</small>
         </div>
 

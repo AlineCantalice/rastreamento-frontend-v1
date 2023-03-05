@@ -20,16 +20,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      { label: 'Meus produtos', icon: 'pi pi-fw pi-box' },
-      { label: 'Open', icon: 'pi pi-fw pi-download' },
-      { label: 'Undo', icon: 'pi pi-fw pi-refresh' }
+      { label: 'Meus produtos', icon: 'pi pi-fw pi-box', routerLink: ['/painel'] },
+      { label: 'Open', icon: 'pi pi-fw pi-download', routerLink: ['/painel'] },
+      { label: 'Undo', icon: 'pi pi-fw pi-refresh', routerLink: ['/painel'] }
     ];
   }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
-    if(this.breakpoint) {
+    if(!this.breakpoint()) {
       this.showMenu = false;
       this.menuOpened = false;
     } else {
@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
   }
 
   toggle(): void {
-    if(this.breakpoint) {
+    if(this.breakpoint()) {
       this.menuOpened = !this.menuOpened;
     } else {
       this.showMenu = !this.showMenu;

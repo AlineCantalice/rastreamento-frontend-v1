@@ -1,17 +1,20 @@
-<nav class="sidebar" [ngClass]="[menuOpened ? '' : '', showMenu ? 'sidebar--mini': '']" #sidebar>
+<nav class="sidebar" [ngClass]="[menuOpened ? 'sidebar--opened' : '', showMenu ? 'sidebar--mini': '']" #sidebar>
     <header class="sidebar__header">
         <button pButton type="button" class="sidebar__button sidebar__button--menu" (click)="toggle()">
             <i class="pi pi-align-justify"></i>
         </button>
-    </header>
-    <p-sidebar [(visible)]="menuOpened">
         <div class="sidebar__heading">Menu</div>
-        <ul>
+        <button pButton type="button" class="sidebar__button sidebar__button--close" (click)="toggle()">
+            <i class="pi pi-times"></i>
+        </button>
+    </header>
+    <div class="sidebar__content">
+        <ul class="sidebar__items">
             <ng-container *ngFor="let item of items">
                 <li class="sidebar__item">
-                    <a routerLink="/painel" [routerLinkActive]="['sidebar__link--active']" class="sidebar__link">
+                    <a routerLink={{item.routerLink}} [routerLinkActive]="['sidebar__link--active']" class="sidebar__link">
                         <div class="sidebar__icon-content">
-                            <i [class]="item.icon"></i>
+                            <i class="sidebar__icon" [class]="item.icon"></i>
                         </div>
                         <div class="sidebar__label">
                             <div class="sidebar__title">{{ item.label }}</div>
@@ -21,6 +24,6 @@
                 </li>
             </ng-container>
         </ul>
-    </p-sidebar>
+    </div>
 
 </nav>
