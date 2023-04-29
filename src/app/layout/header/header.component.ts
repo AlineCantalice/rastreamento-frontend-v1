@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
 
+  constructor(private authService: AuthService) {}
+
   items: MenuItem[];
   user: {
     username: '',
     token: ''
-  } = JSON.parse(localStorage.getItem('currentUser'))
+  } = JSON.parse(sessionStorage.getItem('currentUser'))
 
   ngOnInit(): void {
     this.items = [{
@@ -28,7 +31,7 @@ export class HeaderComponent implements OnInit {
         label: 'Logout',
         icon: 'pi pi-times',
         command: () => {
-          //this.delete();
+          this.authService.logout();
         }
       }
       ]

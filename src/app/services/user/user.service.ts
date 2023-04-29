@@ -14,32 +14,35 @@ export class UserService {
 
   register(data: any) {
 
-    let type = "";
-
-    if(data.cpf) {
-      type = "NP";
-    } else {
-      type = "LP";
-    }
-
-    const body = {
+    const body: Person = {
       name: data.name,
       phone: data.phone,
-      type: type,
-      cpf: data.cpf,
-      cnpj: data.cnpj,
-      tradeName: data.tradeName,
-      stateRegistration: data.stateRegistration,
-      username: data.username,
-      password: data.password,
+      naturalPerson: {
+        cpf: data.naturalPerson.cpf,
+      },
+      legalPerson: {
+        cnpj: data.legalPerson.cnpj,
+        tradeName: data.legalPerson.tradeName,
+        stateRegistration: data.legalPerson.stateRegistration
+      },
+      user: {
+        username: data.user.username,
+        password: data.user.password,
+      },
       address: {
-        street: data.street,
-        number: data.number,
-        complement: data.complement,
-        neighborhood: data.neighborhood,
-        zipCode: data.zipCode,
-        state: data.state.nome,
-        city: data.city.nome
+        street: data.address.street,
+        number: data.address.number,
+        complement: data.address.complement,
+        neighborhood: data.address.neighborhood,
+        zipCode: data.address.zipCode,
+        state: {
+          id: data.address.state.name.id,
+          name: data.address.state.name.nome
+        },
+        city: {
+          id: data.address.city.name.id,
+          name: data.address.city.name.nome
+        }
       }
     }
     return this.http.post<Person>(`${this.URL}/register`, body);
