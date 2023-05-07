@@ -2,7 +2,7 @@ import { City } from "./city.model";
 import { State } from "./state.model";
 
 export interface Address {
-    id: number;
+    id?: number;
     street: string;
     number: string;
     complement: string;

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { PersonTypeInputComponent } from './components/person-type-input/person-type-input.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductFormComponent } from './components/product/form/product-form.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
@@ -34,9 +34,8 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListProductComponent } from './components/list-product/list-product.component';
+import { ProductListComponent } from './components/product/list/product-list.component';
+import { ProductionMaterialComponent } from './components/production-material/production-material.component';
 
 const PRIME_NG = [
   ToastModule,
@@ -75,7 +74,8 @@ const PRIME_NG = [
     PersonTypeInputComponent,
     ProductFormComponent,
     RegisterComponent,
-    ListProductComponent,
+    ProductListComponent,
+    ProductionMaterialComponent,
   ],
   exports: [
     LoginComponent,
@@ -83,7 +83,7 @@ const PRIME_NG = [
     PersonTypeInputComponent,
     ProductFormComponent,
     RegisterComponent,
-    ListProductComponent,
+    ProductListComponent,
     ...PRIME_NG,
   ],
   imports: [

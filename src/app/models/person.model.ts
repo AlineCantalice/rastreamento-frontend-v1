@@ -4,7 +4,7 @@ import { NaturalPerson } from "./natural-person.model";
 import { User } from "./user.model";
 
 export interface Person {
-    id: number;
+    id?: number;
     name: string;
     phone: string;
     user: User;

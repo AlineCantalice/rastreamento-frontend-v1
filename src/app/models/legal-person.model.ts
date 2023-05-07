@@ -1,5 +1,5 @@
 export interface LegalPerson {
-    id: number;
+    id?: number;
     cnpj: string;
     tradeName: string;
     stateRegistration: string;

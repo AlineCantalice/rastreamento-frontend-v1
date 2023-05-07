@@ -1,3 +1,5 @@
+import { Batch } from "./batch.model";
+
 export interface Product {
     id?: number;
     name: string;
@@ -5,6 +7,6 @@ export interface Product {
     variety: string;
     receiptDate: Date;
     shippingDate: Date;
-    batch: number;
+    batch: Batch;
     weight: number;
 }
