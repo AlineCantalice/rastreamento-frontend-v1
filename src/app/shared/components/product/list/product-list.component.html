@@ -1,0 +1,99 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo produto" icon="pi pi-plus" class="p-button-success mr-2"
+                (click)="openNew()"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="products" [rows]="5" [paginator]="true" [scrollable]="true" scrollHeight="360px"
+        [globalFilterFields]="['name','price','variety','receivingDate', 'shippingDate', 'batch', 'weight']"
+        [tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Exibindo {first} até {last} de {totalRecords} produto(s)"
+        [showCurrentPageReport]="true" dataKey="id">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem"></th>
+                <th pSortableColumn="name" style="min-width:10rem">Nome<p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="price" style="min-width:10rem">Preço<p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="variety" style="min-width:10rem">Variedade<p-sortIcon field="variety"></p-sortIcon>
+                </th>
+                <th pSortableColumn="receivingDate" style="min-width:10rem">Data de Recebimento<p-sortIcon
+                        field="receivingDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="shippingDate" style="min-width:10rem">Data de exportação<p-sortIcon
+                        field="shippingDate"></p-sortIcon></th>
+                <th pSortableColumn="batch.value" style="min-width:10rem">Lote<p-sortIcon
+                        field="batch.value"></p-sortIcon></th>
+                <th pSortableColumn="weight" style="min-width:10rem">Peso<p-sortIcon field="weight"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-expanded="expanded">
+            <tr>
+                <td>
+                    <button type="button" pButton pRipple [pRowToggler]="product"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency:'BRL'}}</td>
+                <td>{{product.variety}}</td>
+                <td>{{product.receiptDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{product.shippingDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{product.batch.value}}</td>
+                <td>{{product.weight}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="editProduct(product)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="deleteProduct(product)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-product>
+            <tr>
+                <td colspan="7">
+                    <div class="p-p-3">
+                        <p-table [value]="product.batch.productionMaterial" dataKey="id">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="name">Nome do material<p-sortIcon field="name"></p-sortIcon></th>
+                                    <th pSortableColumn="type">Tipo<p-sortIcon field="type"></p-sortIcon></th>
+                                    <th pSortableColumn="supplier">Fornecedor<p-sortIcon field="supplier"></p-sortIcon></th>
+                                    <th pSortableColumn="batch">Lote<p-sortIcon field="batch"></p-sortIcon></th>
+                                    <th pSortableColumn="receiptDate">Data de recebimento<p-sortIcon field="receiptDate"></p-sortIcon></th>
+                                    <th style="width: 4rem"></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-productionMaterial>
+                                <tr>
+                                    <td>{{productionMaterial.name}}</td>
+                                    <td>{{productionMaterial.type}}</td>
+                                    <td>{{productionMaterial.supplier}}</td>
+                                    <td>{{productionMaterial.batch}}</td>
+                                    <td>{{productionMaterial.receiptDate | date: 'dd/MM/yyyy'}}</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="6">Não há material cadastrado para este produto.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                Tem-se no total {{products ? products.length : 0 }} produto(s).
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<app-product-form *ngIf="productDialog" [product]="product" [productDialog]="productDialog" (closeDialog)="hideDialog()" (save)="getListProducts()"></app-product-form>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -1,5 +1,7 @@
+<p-toast></p-toast>
+
 <form [formGroup]="form" class="app-card">
-    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="surface-card p-4 shadow-2 border-round app-card__form">
         <div class="text-center mb-5">
             <span class="text-600 font-medium line-height-3">Já tem uma conta? Faça seu</span>
             <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" href="/">login!</a>
@@ -16,13 +18,13 @@
                         id="name-help" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
                 </span>
                 <!-- Username input -->
-                <span class="p-float-label app-card__form__input mb-5">
+                <span formGroupName="user" class="p-float-label app-card__form__input mb-5">
                     <input id="float-label" formControlName="username" type="text" placeholder="Nome de usuário"
                         pInputText class="w-full" required minlength="3" maxlength="50"
                         aria-describedby="username-help">
                     <label for="float-label" class="block text-900 font-medium mb-2">Nome de usuário</label>
                     <small
-                        *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)"
+                        *ngIf="form.controls['user']['controls']['username'].invalid && (form.controls['user']['controls']['username'].dirty || form.controls['user']['controls']['username'].touched)"
                         id="username-help" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
                 </span>
             </div>
@@ -38,12 +40,12 @@
                         id="phone-help" class="p-error">Campo obrigatório.</small>
                 </span>
                 <!-- Password input -->
-                <span class="p-float-label app-card__form__input mb-4">
+                <span formGroupName="user" class="p-float-label app-card__form__input mb-4">
                     <input id="float-label" formControlName="password" type="password" placeholder="Senha" pInputText
                         class="w-full" required aria-describedby="password-help">
                     <label for="float-label" class="block text-900 font-medium mb-2">Senha</label>
                     <small
-                        *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+                        *ngIf="form.controls['user']['controls']['password'].invalid && (form.controls['user']['controls']['password'].dirty || form.controls['user']['controls']['password'].touched)"
                         id="password-help" class="p-error">Campo obrigatório com no mínimo 4 caracteres.</small>
                 </span>
             </div>
@@ -66,15 +68,30 @@
 
         <hr class="mb-4" />
 
-        <div class="row">
-            <div class="col">
+        <div formGroupName="address" class="row">
+            <div class="col-sm-6">
+                <!-- State input -->
+                <span formGroupName="state" class="p-float-label mb-5 app-card__form__input">
+                    <p-dropdown styleClass="w-full" [options]="states" [(ngModel)]="selectedState" (ngModelChange)="getCitiesByStatesId()"
+                        [filter]="true" filterBy="nome" formControlName="name" optionLabel="nome"
+                        placeholder="Selecione" [showClear]="true">
+                    </p-dropdown>
+                    <label for="float-input">Estado</label>
+                </span>
+
+                <span formGroupName="city" class="p-float-label mb-5 app-card__form__input">
+                    <p-dropdown styleClass="w-full" [options]="cities" formControlName="name" [filter]="true" filterBy="nome"
+                        optionLabel="nome" placeholder="Selecione" [showClear]="true">
+                    </p-dropdown>
+                    <label for="float-input">Cidade</label>
+                </span>
                 <!-- Cep input -->
                 <span class="p-float-label mb-5 app-card__form__input">
                     <input id="float-input" type="text" pInputText formControlName="zipCode" placeholder="CEP"
                         class="w-full" required aria-describedby="zipCode-help">
                     <label for="float-input" class="block text-900 font-medium mb-2">CEP</label>
                     <small
-                        *ngIf="form.controls['zipCode'].invalid && (form.controls['zipCode'].dirty || form.controls['zipCode'].touched)"
+                        *ngIf="form.controls['address']['controls']['zipCode'].invalid && (form.controls['address']['controls']['zipCode'].dirty || form.controls['address']['controls']['zipCode'].touched)"
                         id="zipCode-help" class="p-error">Campo obrigatório.</small>
                 </span>
                 <span class="p-float-label mb-5 app-card__form__input">
@@ -82,22 +99,18 @@
                         class="w-full" required aria-describedby="street-help">
                     <label for="float-input" class="block text-900 font-medium mb-2">Rua</label>
                     <small
-                        *ngIf="form.controls['street'].invalid && (form.controls['street'].dirty || form.controls['street'].touched)"
+                        *ngIf="form.controls['address']['controls']['street'].invalid && (form.controls['address']['controls']['street'].dirty || form.controls['address']['controls']['street'].touched)"
                         id="zipCode-help" class="p-error">Campo obrigatório.</small>
                 </span>
-                <span class="p-float-label mb-5 app-card__form__input">
-                    <input id="float-input" type="text" pInputText formControlName="complement"
-                        placeholder="Complemento" class="w-full">
-                    <label for="float-input" class="block text-900 font-medium mb-2">Complemento</label>
-                </span>
             </div>
-            <div class="col">
+            <div class="col-sm-6">
+                
                 <!-- Number input -->
                 <span class="p-float-label mb-5 app-card__form__input">
                     <input id="float-input" type="number" pInputText formControlName="number" required aria-describedby="number-help" placeholder="Número" required >
                     <label for="float-input">Número</label>
                     <small
-                        *ngIf="form.controls['number'].invalid && (form.controls['number'].dirty || form.controls['number'].touched)"
+                        *ngIf="form.controls['address']['controls']['number'].invalid && (form.controls['address']['controls']['number'].dirty || form.controls['address']['controls']['number'].touched)"
                         id="number-help" class="p-error">Campo obrigatório.</small>
                 </span>
                 <span class="p-float-label mb-5 app-card__form__input">
@@ -105,25 +118,13 @@
                         required aria-describedby="neighborhood-help">
                     <label for="float-input" class="block text-900 font-medium mb-2">Bairro</label>
                     <small
-                        *ngIf="form.controls['neighborhood'].invalid && (form.controls['neighborhood'].dirty || form.controls['neighborhood'].touched)"
+                        *ngIf="form.controls['address']['controls']['neighborhood'].invalid && (form.controls['address']['controls']['neighborhood'].dirty || form.controls['address']['controls']['neighborhood'].touched)"
                         id="neighborhood-help" class="p-error">Campo obrigatório.</small>
                 </span>
-            </div>
-            <div class="col">
-                <!-- State input -->
                 <span class="p-float-label mb-5 app-card__form__input">
-                    <p-dropdown styleClass="w-full" [options]="states" [(ngModel)]="selectedState" (ngModelChange)="getCitiesByStatesId()"
-                        [filter]="true" filterBy="nome" formControlName="state" optionLabel="nome"
-                        placeholder="Selecione" [showClear]="true">
-                    </p-dropdown>
-                    <label for="float-input">Estado</label>
-                </span>
-
-                <span class="p-float-label mb-5 app-card__form__input">
-                    <p-dropdown styleClass="w-full" [options]="cities" formControlName="city" [filter]="true" filterBy="nome"
-                        optionLabel="nome" placeholder="Selecione" [showClear]="true">
-                    </p-dropdown>
-                    <label for="float-input">Cidade</label>
+                    <input id="float-input" type="text" pInputText formControlName="complement"
+                        placeholder="Complemento" class="w-full">
+                    <label for="float-input" class="block text-900 font-medium mb-2">Complemento</label>
                 </span>
             </div>
         </div>

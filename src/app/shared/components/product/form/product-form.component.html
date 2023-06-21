@@ -1,0 +1,160 @@
+<form [formGroup]="form" class="app-card">
+    <p-dialog [(visible)]="productDialog" [header]="title" [modal]="true" styleClass="p-fluid" (onHide)="hideDialog()">
+        <ng-template pTemplate="content">
+            <div class="row pt-4">
+                <div class="col-sm-6">
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <input id="float-input" type="text" pInputText formControlName="name" required>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Nome</label>
+                        <small
+                            *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+                            id="name-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
+                    </span>
+
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <input id="float-input" type="text" pInputText formControlName="variety" required>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Variedade</label>
+                        <small
+                            *ngIf="form.controls['variety'].invalid && (form.controls['variety'].dirty || form.controls['variety'].touched)"
+                            id="variety-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                            caracteres.</small>
+                    </span>
+                </div>
+
+                <div class="col-sm-6">
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <p-inputNumber id="weight" formControlName="weight" locale="pt-BR" suffix=" kg"></p-inputNumber>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Peso</label>
+                        <small
+                            *ngIf="form.controls['weight'].invalid && (form.controls['weight'].dirty || form.controls['weight'].touched)"
+                            id="weight-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
+                    </span>
+
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <p-inputNumber id="price" formControlName="price" locale="pt-BR"
+                            mode="currency" currency="BRL"></p-inputNumber>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Preço</label>
+                        <small
+                            *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)"
+                            id="price-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3 caracteres.</small>
+                    </span>
+                </div>
+
+                <div #productCalendar class="col-sm-6">
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <p-calendar [appendTo]="productCalendar" class="custom-calendar" formControlName="receiptDate" dateFormat="dd/mm/yy"
+                            inputId="receiptDate"></p-calendar>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Data de recebimento</label>
+                        <small
+                            *ngIf="form.controls['receiptDate'].invalid && (form.controls['receiptDate'].dirty || form.controls['receiptDate'].touched)"
+                            id="receiptDate-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                            caracteres.</small>
+                    </span>
+
+                    <span class="p-float-label mb-5 app-card__form__input">
+                        <p-calendar [appendTo]="productCalendar" formControlName="shippingDate" dateFormat="dd/mm/yy"
+                            inputId="shippingDate"></p-calendar>
+                        <label for="float-input" class="block text-900 font-medium mb-2">Data de exportação</label>
+                        <small
+                            *ngIf="form.controls['shippingDate'].invalid && (form.controls['shippingDate'].dirty || form.controls['shippingDate'].touched)"
+                            id="shippingDate-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                            caracteres.</small>
+                    </span>
+                </div>
+
+            </div>
+            <div formGroupName="batch">
+
+                <div formArrayName="productionMaterial">
+                    <div class="row" *ngFor="let material of materialsFormArray.controls; let i=index"
+                        [formGroupName]="i">
+                        <div #materialCalendar class="col-sm-6">
+                            <span class="p-float-label mb-5 app-card__form__input">
+                                <input id="float-input" type="text" pInputText formControlName="name" required>
+                                <label for="float-input" class="block text-900 font-medium mb-2">Nome do
+                                    Material</label>
+                                <small
+                                    *ngIf="materialsFormArray.controls[i].get('name').invalid && (materialsFormArray.controls[i].get('name').dirty || materialsFormArray.controls[i].get('name').touched)"
+                                    id="name-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                    caracteres.</small>
+                            </span>
+                            <div>
+                                <span class="p-float-label mb-5 app-card__form__input">
+                                    <p-dropdown styleClass="w-full" [options]="types" [(ngModel)]="selectedType[i]"
+                                        formControlName="type" placeholder="Selecione" [showClear]="true">
+                                    </p-dropdown>
+                                    <label for="float-input" class="block text-900 font-medium mb-2">Tipo do
+                                        material</label>
+                                    <small
+                                        *ngIf="materialsFormArray.controls[i].get('type').invalid && (materialsFormArray.controls[i].get('type').dirty || materialsFormArray.controls[i].get('type').touched)"
+                                        id="type-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                        caracteres.</small>
+                                </span>
+                            </div>
+                            <!-- Novo input para o tipo de material 'Outros' -->
+                            <div *ngIf="selectedType[i] === 'Outros'">
+                                <span class="p-float-label mb-5 app-card__form__input">
+                                    <input id="float-input" type="text" pInputText formControlName="type" required>
+                                    <label for="float-input" class="block text-900 font-medium mb-2">Outro tipo de
+                                        material</label>
+                                    <small
+                                        *ngIf="materialsFormArray.controls[i].get('type').invalid && (materialsFormArray.controls[i].get('type').dirty || materialsFormArray.controls[i].get('type').touched)"
+                                        id="type-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                        caracteres.</small>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="p-float-label mb-3 app-card__form__input">
+                                    <p-calendar [appendTo]="materialCalendar" formControlName="receiptDate" dateFormat="dd/mm/yy"
+                                        inputId="receiptDate"></p-calendar>
+                                    <label for="float-input" class="block text-900 font-medium mb-2">Data de recebimento
+                                        do material</label>
+                                    <small
+                                        *ngIf="materialsFormArray.controls[i].get('receiptDate').invalid && (materialsFormArray.controls[i].get('receiptDate').dirty || materialsFormArray.controls[i].get('receiptDate').touched)"
+                                        id="receiptDate-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                        caracteres.</small>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div>
+                                <span class="p-float-label mb-5 app-card__form__input">
+                                    <input id="float-input" type="text" pInputText formControlName="batch" required>
+                                    <label for="float-input" class="block text-900 font-medium mb-2">Lote do
+                                        Material</label>
+                                    <small
+                                        *ngIf="materialsFormArray.controls[i].get('batch').invalid && (materialsFormArray.controls[i].get('batch').dirty || materialsFormArray.controls[i].get('batch').touched)"
+                                        id="batch-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                        caracteres.</small>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="p-float-label mb-5 app-card__form__input">
+                                    <input id="float-input" type="text" pInputText formControlName="supplier" required>
+                                    <label for="float-input" class="block text-900 font-medium mb-2">Fornecedor do
+                                        Material</label>
+                                    <small
+                                        *ngIf="materialsFormArray.controls[i].get('supplier').invalid && (materialsFormArray.controls[i].get('supplier').dirty || materialsFormArray.controls[i].get('supplier').touched)"
+                                        id="supplier-help-{{i}}" class="p-error">Campo obrigatório com no mínimo 3
+                                        caracteres.</small>
+                                </span>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Remover material" icon="pi pi-minus"
+                            class="p-button-text p-button-danger mb-5" (click)="removeMaterialForm(i)"></button>
+                    </div>
+                    <button pButton type="button" label="Adicionar material" icon="pi pi-plus" class="p-button-text"
+                        (click)="addMaterialForm()"></button>
+                </div>
+
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="Cancelar" icon="pi pi-times" class="p-button-text"
+                (click)="hideDialog()"></button>
+            <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="onSubmit()"></button>
+        </ng-template>
+
+    </p-dialog>
+</form>

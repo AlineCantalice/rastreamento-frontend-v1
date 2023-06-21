@@ -1,0 +1,711 @@
+{
+  "register": [
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "type": "NP",
+      "cpf": "24543435434",
+      "cnpj": "",
+      "tradeName": "",
+      "stateRegistration": "",
+      "username": "AlineC",
+      "password": "123321",
+      "address": {
+        "street": "teste",
+        "number": 12,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": "Acre",
+        "city": "Acrelândia"
+      },
+      "id": 1
+    },
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "09704115458"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "AlineC",
+        "password": "123321"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {
+          "name": {
+            "id": 12,
+            "sigla": "AC",
+            "nome": "Acre",
+            "regiao": {
+              "id": 1,
+              "sigla": "N",
+              "nome": "Norte"
+            }
+          }
+        },
+        "city": {
+          "name": {
+            "id": 1200013,
+            "nome": "Acrelândia",
+            "microrregiao": {
+              "id": 12004,
+              "nome": "Rio Branco",
+              "mesorregiao": {
+                "id": 1202,
+                "nome": "Vale do Acre",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            },
+            "regiao-imediata": {
+              "id": 120001,
+              "nome": "Rio Branco",
+              "regiao-intermediaria": {
+                "id": 1201,
+                "nome": "Rio Branco",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "id": 2
+    },
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "09704115458"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "AlineC",
+        "password": "123321"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {},
+        "city": {}
+      },
+      "id": 3
+    },
+    {
+      "name": "",
+      "phone": "",
+      "naturalPerson": {
+        "cpf": ""
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "",
+        "password": ""
+      },
+      "address": {
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "zipCode": "",
+        "state": {},
+        "city": {
+          "name": ""
+        }
+      },
+      "id": 4
+    },
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "09704115458"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "AlineC",
+        "password": "123321"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {
+          "name": {
+            "id": 12,
+            "sigla": "AC",
+            "nome": "Acre",
+            "regiao": {
+              "id": 1,
+              "sigla": "N",
+              "nome": "Norte"
+            }
+          }
+        },
+        "city": {
+          "name": {
+            "id": 1200013,
+            "nome": "Acrelândia",
+            "microrregiao": {
+              "id": 12004,
+              "nome": "Rio Branco",
+              "mesorregiao": {
+                "id": 1202,
+                "nome": "Vale do Acre",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            },
+            "regiao-imediata": {
+              "id": 120001,
+              "nome": "Rio Branco",
+              "regiao-intermediaria": {
+                "id": 1201,
+                "nome": "Rio Branco",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "id": 5
+    },
+    {
+      "name": "",
+      "phone": "",
+      "naturalPerson": {
+        "cpf": ""
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "",
+        "password": ""
+      },
+      "address": {
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "zipCode": "",
+        "state": {
+          "name": "Acre"
+        },
+        "city": {
+          "name": "Acrelândia"
+        }
+      },
+      "id": 6
+    },
+    {
+      "name": "",
+      "phone": "",
+      "naturalPerson": {
+        "cpf": ""
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "",
+        "password": ""
+      },
+      "address": {
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "zipCode": "",
+        "state": {
+          "id": 12,
+          "name": "Acre"
+        },
+        "city": {
+          "id": 1200013,
+          "name": "Acrelândia"
+        }
+      },
+      "id": 7
+    },
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "09704115458"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "AlineC",
+        "password": "123321"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {
+          "id": 12,
+          "name": "Acre"
+        },
+        "city": {
+          "id": 1200013,
+          "name": "Acrelândia"
+        }
+      },
+      "id": 8
+    },
+    {
+      "name": "83996300775",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "21651315556"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "Aline de Cantalice Mendes",
+        "password": "1231232"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {
+          "id": 12,
+          "name": "Acre"
+        },
+        "city": {
+          "id": 1200013,
+          "name": "Acrelândia"
+        }
+      },
+      "id": 9
+    },
+    {
+      "name": "83996300775",
+      "phone": "(83) 99630-0775",
+      "naturalPerson": {
+        "cpf": "84654646545"
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "user": {
+        "username": "Aline de Cantalice Mendes",
+        "password": "546543435"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "zipCode": "58400-058",
+        "state": {
+          "id": 12,
+          "name": "Acre"
+        },
+        "city": {
+          "id": 1200013,
+          "name": "Acrelândia"
+        }
+      },
+      "id": 10
+    },
+    {
+      "name": "Aline de Cantalice Mendes",
+      "phone": "(83) 99630-0775",
+      "user": {
+        "username": "AlineC",
+        "password": "123321"
+      },
+      "address": {
+        "street": "Avenida Rio Branco",
+        "zipCode": "58400-058",
+        "number": 1229,
+        "complement": "",
+        "neighborhood": "teste",
+        "city": {
+          "name": {
+            "id": 1200013,
+            "nome": "Acrelândia",
+            "microrregiao": {
+              "id": 12004,
+              "nome": "Rio Branco",
+              "mesorregiao": {
+                "id": 1202,
+                "nome": "Vale do Acre",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            },
+            "regiao-imediata": {
+              "id": 120001,
+              "nome": "Rio Branco",
+              "regiao-intermediaria": {
+                "id": 1201,
+                "nome": "Rio Branco",
+                "UF": {
+                  "id": 12,
+                  "sigla": "AC",
+                  "nome": "Acre",
+                  "regiao": {
+                    "id": 1,
+                    "sigla": "N",
+                    "nome": "Norte"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "name": {
+            "id": 12,
+            "sigla": "AC",
+            "nome": "Acre",
+            "regiao": {
+              "id": 1,
+              "sigla": "N",
+              "nome": "Norte"
+            }
+          }
+        }
+      },
+      "legalPerson": {
+        "cnpj": "",
+        "tradeName": "",
+        "stateRegistration": ""
+      },
+      "naturalPerson": {
+        "cpf": "09704115458"
+      },
+      "id": 11
+    }
+  ],
+  "login": [
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 1
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 2
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 3
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 4
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 5
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 6
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 7
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 8
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 9
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 10
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 11
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 12
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 13
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 14
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 15
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 16
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 17
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 18
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 19
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 20
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 21
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 22
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 23
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 24
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 25
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 26
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 27
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 28
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 29
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 30
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 31
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 32
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 33
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 34
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 35
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 36
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 37
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 38
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 39
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 40
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 41
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 42
+    },
+    {
+      "username": "AlineC",
+      "password": "123321",
+      "id": 43
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "Abacaxi",
+      "price": 5,
+      "receiptDate": "2023-06-04T03:00:00.000Z",
+      "shippingDate": "2023-06-07T03:00:00.000Z",
+      "variety": "fruta",
+      "batch": {
+        "value": "546da368-a02d-4d99-8f5e-65efe5112f06",
+        "productionMaterial": [
+          {
+            "name": "Material",
+            "type": "Sementes",
+            "supplier": "fornecedor",
+            "batch": "lote",
+            "receiptDate": "2023-06-04T03:00:00.000Z"
+          }
+        ]
+      },
+      "weight": 55555
+    }
+  ]
+}

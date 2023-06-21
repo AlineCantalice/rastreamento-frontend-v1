@@ -1,4 +1,4 @@
 export interface NaturalPerson {
-    id: number;
+    id?: number;
     cpf: string;
 }
