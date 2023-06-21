@@ -35,7 +35,6 @@ import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './components/product/list/product-list.component';
-import { ProductionMaterialComponent } from './components/production-material/production-material.component';
 
 const PRIME_NG = [
   ToastModule,
@@ -75,7 +74,6 @@ const PRIME_NG = [
     ProductFormComponent,
     RegisterComponent,
     ProductListComponent,
-    ProductionMaterialComponent,
   ],
   exports: [
     LoginComponent,
